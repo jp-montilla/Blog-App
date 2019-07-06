@@ -1,6 +1,35 @@
-<h1>Editing Post</h1>
 
-<%= render 'form', post: @post %>
+<div class="container" style="width: 60%">
+	<%= link_to 'Show', @post %> |
+	<%= link_to 'Back', posts_path %>
+    <div class="jumbotron" id="new_post">
+      <center><h2>Edit Post</h2></center>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |e|%>
+          <p class="text-danger"><%= e %></p>
+        <% end %>
+      <% end %>
+
+
+      <%= form_for(@post) do |f|%>
+        <%= f.hidden_field :admin_id, value: current_admin.id %>
+        <p>
+          <%= f.label :title %>
+          <%= f.text_field :title , :class => 'input_field'%>
+        </p>
+        <p>
+          <%= f.label :description %>
+          <%= f.text_area :description ,size: "10x10", :class => 'input_field'%>
+        </p>
+        <p>
+          <%= f.label :picture %>
+          <%= f.file_field :picture , :class => 'input_field'%>
+        </p>
+        <center> <%= f.submit :class => 'btn btn-block btn-primary'%> </center>
+      <% end %>
+
+    </div>
+  </div>
+
+

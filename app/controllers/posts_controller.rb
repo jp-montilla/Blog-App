@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc)
+    @add_post = Post.new
   end
 
   def show
@@ -14,39 +15,34 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
-
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      flash[:success] = "Post added successfully"
+      redirect_to root_path
+    else
+      flash[:errors] = @post.errors.full_messages
+      redirect_to root_path
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      flash[:success] = "Post added successfully"
+      redirect_to root_path
+    else
+      flash[:errors] = @post.errors.full_messages
+      redirect_to edit_post_path
     end
   end
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Post deleted successfully"
+    redirect_to root_path
   end
 
   private

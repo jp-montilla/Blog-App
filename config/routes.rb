@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post 'posts/comment' => 'comment#create'
 
+  get 'profile/:id' => 'profile#show', as: "profile"
+
 
 
 

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :posts
   devise_for :views
   devise_for :admins, path: 'admins'
-  root 'home#index'
+  root 'posts#index'
 
   get 'admins' => 'admin#index'
   get 'admins/new' => 'admin#new'

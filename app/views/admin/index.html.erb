@@ -1,0 +1,29 @@
+<h1>Admins</h1>
+<% if flash[:success] %>
+	<p class="alert alert-success"><%= flash[:success] %></p>
+<% end %>
+<% if flash[:del_errors] %>
+	<p class="alert alert-danger"><%= flash[:del_errors] %></p>
+<% end %>
+<a href="admins/new" class="btn btn-primary">Add admin</a>
+<hr>
+<table class="table">
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Email</td>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @admin.each do |member| %>
+			<tr>
+				<td/><%= member.name %></td>
+				<td/><%= member.email %></td>
+				<td><%= link_to "Edit admin", admins_edit_path(member.id), :class => 'btn btn-success' %> <%= link_to "Delete admin", admins_delete_path(member.id), data: { method: :delete, confirm: "Are you sure?" } , :class => 'btn btn-danger' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

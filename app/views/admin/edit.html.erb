@@ -1,0 +1,21 @@
+<h1>Edit Admin</h1>
+
+<% if flash[:errors]%>
+	<% flash[:errors].each do |e|%>
+		<p class="alert alert-danger"><%= e %></p>
+	<% end %>
+<%end%>
+
+<%= form_for(@admin, url: "admin_update") do |f|%>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :email %>
+		<%= f.email_field :email %>
+	</p>
+	<%= f.submit %>
+<% end %>
+
+<%= link_to "Admin", admins_path %>

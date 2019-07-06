@@ -9,20 +9,18 @@
         <br/>
         <br/>
         <div class="jumbotron">
-          
           <div>
             <a href="#"><%= post.admin.name %></a>
             <h3><%= post.title %></h3>
             <p><%= post.description %></p>
             
           </div>
-          <%= image_tag post.picture_url, width: '100%', :class => "card-img-top" if post.picture.present? %>
+          <a href="posts/<%= post.id %>"> <%= image_tag post.picture_url, width: '100%', :class => "card-img-top" if post.picture.present? %></a>
 
           <% if current_admin %>
             <% if post.admin_id == current_admin.id %>
-              <%= link_to 'Show', post %>
-              <%= link_to 'Edit', edit_post_path(post) %>
-              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Edit Post', edit_post_path(post) %> | 
+              <%= link_to 'Destroy Post', post, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
         </div>

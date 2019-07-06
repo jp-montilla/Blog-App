@@ -1,1 +1,5 @@
-<h1>Index Page</h1>
+<% if flash[:success] %>
+	<p class="alert alert-success"><%= flash[:success] %></p>
+<% end %>
+
+<h1>Welcome <%= current_admin.name %></h1>

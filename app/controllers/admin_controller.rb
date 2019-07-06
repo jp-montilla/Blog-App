@@ -17,7 +17,7 @@ class AdminController < ApplicationController
 			redirect_to admins_path
 		else
 			flash[:errors] = @admin.errors.full_messages
-			redirect_to Admins_new_path
+			redirect_to admins_new_path
 		end
 	end
 

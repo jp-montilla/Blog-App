@@ -1,0 +1,28 @@
+<h1>Sign Up!</h1>
+
+<% if flash[:errors]%>
+	<% flash[:errors].each do |e|%>
+		<p class="alert alert-danger"><%= e %></p>
+	<% end %>
+<%end%>
+
+<%= form_for(@user, url: register_new_user_path) do |f|%>
+	<%= f.hidden_field :role, value: "user" %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :email %>
+		<%= f.email_field :email %>
+	</p>
+	<p>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</p>
+	<p>
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+	</p>
+	<%= f.submit "Create User" %>
+<% end %>

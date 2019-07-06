@@ -23,6 +23,8 @@
               <%= link_to 'Destroy Post', post, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
+          <hr>
+          <label><%= post.comment.count %> comments</label>
         </div>
         <hr>
       <% end %>

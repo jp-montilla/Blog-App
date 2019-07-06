@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'register' => 'sign_up_user#new'
   post 'register/new_user' => 'sign_up_user#create'
 
+  post 'posts/comment' => 'comment#create'
+
 
 
 

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'profile/:id' => 'profile#show', as: "profile"
   get 'profile/posts/:id' => 'profile#view'
+  post 'profile/posts/comment' => 'profile#create'
 
 
 

@@ -7,9 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(
-	name: "Admin",
+	name: "Admin Surname",
 	email: "email@email.com",
 	role: "admin",
 	password: "password",
 	password_confirmation: "password"
 )
+Admin.create(
+	name: "John Doe",
+	email: "johndoe@email.com",
+	role: "user",
+	password: "password",
+	password_confirmation: "password"
+)
+

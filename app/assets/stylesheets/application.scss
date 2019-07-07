@@ -14,13 +14,23 @@
  *= require_self
  */
 
+
+ body{
+ 	background-color: #e3e4e6
+ }
+
  .comment{
  	width: 100%
  }
  #new_post{
  	p {
  		.input_field{
- 			width: 100%
+ 			width: 100%;
+ 			padding: 0;
  		}
  	}
  }
+ .navbar{
+  z-index: 1;
+ }
+

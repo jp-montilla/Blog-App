@@ -12,27 +12,22 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <%= link_to "Blogging App", root_path, :class => 'navbar-brand' %>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <%= link_to "Home", root_path, :class => 'nav-link active' %>
           </li>
-
           <% if admin_signed_in? && current_admin.role == "admin" %>
-            <li class="nav-item active">
-              <a class="nav-link" href="admins">admins</a>
+            <li class="nav-item">
+              <%= link_to "Admins", admins_path, :class => 'nav-link' %>
             </li>
           <% end %>
-         
         </ul>
       </div>
       <p class="navbar-text pull-right">
         <% if admin_signed_in? %>
-          Logged in as <strong><%= current_admin.email %></strong>.
+          Logged in as <strong><%= current_admin.name %></strong>.
           <%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %>
         <% else %>
           <%= link_to "Sign Up", register_path, :class => 'navbar-link'  %> |
@@ -40,12 +35,11 @@
         <% end %>
       </p>
     </nav>
-    <div class="container">
+
+
+    <div class="container-fluid">
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
+        <center><p class="text-success"><%= notice %></p></center>
       <% end %>
       <%= yield %>
     </div>

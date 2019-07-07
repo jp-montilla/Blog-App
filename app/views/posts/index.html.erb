@@ -60,7 +60,7 @@
             <% end %>
           <% end %>
           <hr>
-          <label><%= post.comment.count %> comments</label>
+          <%= link_to "#{post.comment.count} comments", post_path(post.id) %>
         </div>
         <hr>
       <% end %>
